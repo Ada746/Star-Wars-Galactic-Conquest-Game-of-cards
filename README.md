@@ -10,7 +10,6 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript_ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![No Dependencies](https://img.shields.io/badge/dependencies-0-00e5ff?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-ffe81f?style=for-the-badge)
 
 <img width="1920" height="983" alt="preview1" src="https://github.com/user-attachments/assets/e13a7b3d-add3-453e-9bac-60d26aa6ceb2" />
 
