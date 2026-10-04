@@ -12,6 +12,9 @@
 ![No Dependencies](https://img.shields.io/badge/dependencies-0-00e5ff?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-ffe81f?style=for-the-badge)
 
+<img width="1920" height="983" alt="preview1" src="https://github.com/user-attachments/assets/e13a7b3d-add3-453e-9bac-60d26aa6ceb2" />
+
+
 
 https://github.com/user-attachments/assets/8b035023-2880-49e3-ba46-1a045a06c37d
 
