@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars: Galactic Clash</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- start and rules overlay -->
+    <div id="game-intro">
+        <h1 class="logo-title">Galactic Conquest</h1>
+        <div class="rules-box">
+            <h3>Rules of Engagement</h3>
+            <p>1. Liberate all 3 planetary sectors from the Empire to confront Palpatine on the Death Star.</p>
+            <p>2. Select a stat (Height, Mass, Films, Vehicles, Starships, Age) to battle each round.</p>
+            <p>3. <strong>Planet Buff:</strong> Native homeworld cards gain +20 bonus power.</p>
+            <p>4. <strong>Counter System:</strong> Jedi &gt; Bounty Hunter &gt; Droid &gt; Sith &gt; Jedi.</p>
+            <p>5. Use your <strong>Jedi Mind Trick</strong> ability once per match to reveal the AI's secret move!</p>
+
+            <!-- ai difficulty selector buttons -->
+            <div style="margin: 16px 0;">
+                <strong>Select AI Difficulty:</strong>
+                <div class="stat-buttons" style="margin-top: 8px;">
+                    <button id="diff-easy" class="stat-btn active" type="button">Easy (Standard AI)</button>
+                    <button id="diff-thrawn" class="stat-btn" type="button">Thrawn (Tactical AI)</button>
+                </div>
+            </div>
+
+            <p id="game-loading-status">Connecting to SWAPI Holocron Net...</p>
+            <button id="btn-start-game" style="display: none;">Launch Campaign</button>
+        </div>
+    </div>
+
+    <!-- battlefield board -->
+    <div id="game-board" style="display: none;">
+        <!-- galactic conquest sector progress map -->
+        <div id="campaign-map">
+            <div class="map-sector current" data-sector="0">1. Tatooine</div>
+            <div class="map-sector locked" data-sector="1">2. Hoth</div>
+            <div class="map-sector locked" data-sector="2">3. Coruscant</div>
+            <div class="map-sector locked" data-sector="3">Final: Death Star</div>
+        </div>
+
+        <!-- scoreboard with difficulty tag -->
+        <div id="scoreboard">
+            <span class="score-pill">Player: <strong id="score-player">0</strong></span>
+            <span id="round-indicator" class="round-badge">Round 1 / 5</span>
+            <span id="ai-mode-tag" class="round-badge" style="border-color: #ff3333; color: #ff4d4f;">AI: EASY</span>
+            <span class="score-pill">Imperial AI: <strong id="score-cpu">0</strong></span>
+        </div>
+
+        <!-- battlefield sector banner -->
+        <div id="planet-banner">
+            <span class="planet-title">SECTOR BATTLEFIELD:</span>
+            <strong id="active-planet-name">Tatooine</strong>
+            <span id="active-planet-bonus">(Homeworld bonus: +20 to chosen stat)</span>
+        </div>
+
+        <!-- jedi mind trick trigger panel -->
+        <div id="ability-panel">
+            <button id="btn-mind-trick" class="ability-btn">⚡ Use Jedi Mind Trick (1 Left)</button>
+            <div id="mind-trick-preview" style="display: none;">
+                <span>AI Target Revealed: </span><strong id="revealed-card-name"></strong>
+            </div>
+        </div>
+
+        <!-- computer hand -->
+        <div class="hand-label">Imperial AI Reserve</div>
+        <div id="cpu-hand" class="cards-row"></div>
+
+        <!-- stat picker controls -->
+        <div id="stat-picker-area">
+            <h3>Choose Clash Attribute:</h3>
+            <div class="stat-buttons">
+                <button class="stat-btn active" data-stat="height">Height (cm)</button>
+                <button class="stat-btn" data-stat="mass">Mass (kg)</button>
+                <button class="stat-btn" data-stat="films">Film Count</button>
+                <button class="stat-btn" data-stat="vehicles">Vehicles Piloted</button>
+                <button class="stat-btn" data-stat="starships">Starships Flown</button>
+                <button class="stat-btn" data-stat="birth_year">Age (BBY)</button>
+            </div>
+            <p class="stat-hint">Select a stat above, then click a card from your hand to clash!</p>
+        </div>
+
+        <!-- player hand -->
+        <div class="hand-label">Your Squad Hand</div>
+        <div id="player-hand" class="cards-row"></div>
+    </div>
+
+    <!-- battle clash modal overlay -->
+    <div id="battle-modal" class="modal-overlay">
+        <div class="modal-box clash-box">
+            <h2 id="clash-planet-title" class="section-heading">Battle Loading...</h2>
+            <div id="clash-substatus">Fighters approaching the arena...</div>
+
+            <!-- card face-off arena -->
+            <div id="clash-arena">
+                <div id="clash-card-player" class="clash-card-slot"></div>
+                <div id="saber-flash-fx"></div>
+                <div id="clash-card-cpu" class="clash-card-slot"></div>
+            </div>
+
+            <!-- breakdown of stats, rock-paper-scissors & planet buffs -->
+            <div id="clash-stats-breakdown"></div>
+
+            <!-- winner celebration card showcase -->
+            <div id="winner-spotlight" style="display: none;">
+                <h2 id="winner-banner-text">Winner Revealed</h2>
+                <div id="winner-card-container"></div>
+                <button id="btn-next-round">Next Battle</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- game over modal overlay -->
+    <div id="game-over-modal" class="modal-overlay">
+        <div class="modal-box" style="text-align: center; max-width: 480px;">
+            <h2 id="game-over-title" class="section-heading" style="font-size: 28px;">Game Over</h2>
+            <p id="game-over-score" style="font-size: 20px; font-weight: bold; color: #ffe81f;"></p>
+            <p id="game-over-message" style="font-size: 16px; margin: 16px 0 24px; color: #f3f4f6;"></p>
+            <button id="btn-restart-game" class="stat-btn active" style="padding: 12px 30px; font-size: 16px;">Play Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
